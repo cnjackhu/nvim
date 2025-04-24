@@ -7,36 +7,7 @@ return {
   { "brenoprata10/nvim-highlight-colors" },
   { "tpope/vim-projectionist" },
   "nanotee/zoxide.vim",
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
-    cmd = "Neotree",
-    keys = {
-      {
-        "\\",
-        function()
-          require("neo-tree.command").execute({ toggle = true })
-        end,
-        desc = "NeoTree reveal",
-        silent = true,
-      },
-    },
-    opts = {
-      filesystem = {
-        reveal_force_cwd = true,
-        window = {
-          mappings = {
-            ["\\"] = "close_window",
-          },
-        },
-      },
-    },
-  },
+
   { "preservim/vim-pencil" },
   {
     "folke/noice.nvim",
@@ -296,40 +267,7 @@ end,            desc = "Toggle Flash Search" },
     end,
   },
   "mg979/vim-visual-multi",
-  {
-    "williamboman/mason.nvim",
-    dependencies = {
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-    },
-    config = function()
-      local mason = require("mason")
-      local mason_tool_installer = require("mason-tool-installer")
 
-      -- enable mason and configure icons
-      mason.setup({
-        ui = {
-          icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗",
-          },
-        },
-      })
-
-      mason_tool_installer.setup({
-        ensure_installed = {
-          "prettier",
-          "prettierd",
-          "eslint_d",
-          "htmlbeautifier",
-          "beautysh",
-          "yamlfix",
-          "taplo",
-          "shellcheck",
-        },
-      })
-    end,
-  },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
