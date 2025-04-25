@@ -14,13 +14,21 @@ return {
           yaml = { "yamlfix" },
           toml = { "taplo" },
           sh = { "shellcheck" },
-          python = { "isort", "black" },
+          python = {
+            -- To fix auto-fixable lint errors.
+            "ruff_fix",
+            -- To run the Ruff formatter.
+            "ruff_format",
+            -- To organize the imports.
+            "ruff_organize_imports",
+          },
+          -- python = { "isort", "black" },
         },
         format_on_save = {
           lsp_fallback = true,
           async = false,
-          timeout_ms = 500
-        } 
+          timeout_ms = 500,
+        },
       })
 
       vim.keymap.set({ "n", "v" }, "<leader>l", function()

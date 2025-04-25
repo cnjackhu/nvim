@@ -201,7 +201,10 @@ return {
       marksman = {},
       -- clangd = {},
       -- gopls = {},
-
+      ruff = {
+        mason = false,
+        enabled = false,
+      },
       pyright = {
         settings = {
           pyright = {
@@ -258,11 +261,9 @@ return {
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
-    print("first", vim.inspect(ensure_installed))
     vim.list_extend(ensure_installed, {
       "stylua", -- Used to format Lua code
     })
-    print("second", vim.inspect(ensure_installed))
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     require("mason-lspconfig").setup({
