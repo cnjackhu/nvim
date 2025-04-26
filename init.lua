@@ -20,14 +20,14 @@ require("lazy").setup("plugins", {
   },
 })
 
-require('exosyphon.globals')
-require('exosyphon.remaps')
-require('exosyphon.options')
+require("hjh.globals")
+require("hjh.keymaps")
+require("hjh.options")
 vim.cmd("colorscheme tokyonight")
 -- related to vim.illluminate plugin
-vim.cmd('hi IlluminatedWordText guibg=none gui=underline')
-vim.cmd('hi IlluminatedWordRead guibg=none gui=underline')
-vim.cmd('hi IlluminatedWordWrite guibg=none gui=underline')
-require('nvim-highlight-colors').setup({
+vim.cmd("hi IlluminatedWordText guibg=none gui=underline")
+vim.cmd("hi IlluminatedWordRead guibg=none gui=underline")
+vim.cmd("hi IlluminatedWordWrite guibg=none gui=underline")
+require("nvim-highlight-colors").setup({
   enable_named_colors = false,
 })

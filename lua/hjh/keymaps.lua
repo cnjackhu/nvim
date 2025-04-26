@@ -1,30 +1,25 @@
 -- set esc to quit lazy ui
 require("lazy.view.config").keys.close = "<esc>"
--- Jump between markdown headers
-vim.keymap.set("n", "gj", [[/^##\+ .*<CR>]], { buffer = true, silent = true })
-vim.keymap.set("n", "gk", [[?^##\+ .*<CR>]], { buffer = true, silent = true })
 
--- from here https://miek.nl/2024/january/31/osc52-my-cut-paste-journey/
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
--- NORMAL mode mappings
-map("n", "y", '"+y', opts)
-map("n", "p", '"+p', opts)
-map("n", "P", '"+P', opts)
-map("n", "x", '"+x', opts)
-map("n", "X", '"+X', opts)
-map("n", "d", '"+d', opts)
-map("n", "Y", '"+yy', opts)
-map("n", "dd", '"+dd', opts)
+-- -- from here https://miek.nl/2024/january/31/osc52-my-cut-paste-journey/
+-- local map = vim.keymap.set
+-- local opts = { noremap = true, silent = true }
+-- -- NORMAL mode mappings
+-- map("n", "y", '"+y', opts)
+-- map("n", "p", '"+p', opts)
+-- map("n", "P", '"+P', opts)
+-- map("n", "x", '"+x', opts)
+-- map("n", "X", '"+X', opts)
+-- map("n", "d", '"+d', opts)
+-- map("n", "Y", '"+yy', opts)
+-- map("n", "dd", '"+dd', opts)
+-- -- -- VISUAL mode mappings
+-- map("v", "y", '"+y', opts)
+-- map("v", "d", '"+d', opts)
+-- map("v", "x", '"+x', opts)
+-- map("v", "X", '"+X', opts)
+-- map("v", "Y", '"+yy', opts)
 --
--- -- VISUAL mode mappings
-map("v", "y", '"+y', opts)
-map("v", "d", '"+d', opts)
-map("v", "x", '"+x', opts)
-map("v", "X", '"+X', opts)
-map("v", "Y", '"+yy', opts)
-
 -- Exit insert mode without hitting Esc
 vim.keymap.set("i", "jj", "<Esc><Esc>", { desc = "Esc" })
 

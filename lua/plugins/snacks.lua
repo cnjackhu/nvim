@@ -37,6 +37,13 @@ return {
     },
     -- Grep
     {
+      "<leader>sr",
+      function()
+        Snacks.picker.registers()
+      end,
+      desc = "Registers",
+    },
+    {
       "<leader>sb",
       function()
         Snacks.picker.lines()

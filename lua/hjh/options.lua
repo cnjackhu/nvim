@@ -36,6 +36,5 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.conceallevel = 2
 
-vim.opt.termguicolors = true
 -- for zoxide
 vim.g.zoxide_use_select = true

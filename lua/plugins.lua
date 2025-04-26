@@ -4,30 +4,14 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+
   { "brenoprata10/nvim-highlight-colors" },
+
   { "tpope/vim-projectionist" },
   "nanotee/zoxide.vim",
 
   { "preservim/vim-pencil" },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      routes = {
-        {
-          filter = { event = "notify", find = "No information available" },
-          opts = { skip = true },
-        },
-      },
-      presets = {
-        lsp_doc_border = true,
-      },
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-  },
+
   {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
@@ -36,12 +20,14 @@ return {
       })
     end,
   },
+
   {
     "RRethy/vim-illuminate",
     config = function()
       require("illuminate")
     end,
   },
+
   {
     "folke/flash.nvim",
     event = "VeryLazy",
@@ -71,6 +57,7 @@ end, desc = "Treesitter Search" },
 end,            desc = "Toggle Flash Search" },
     },
   },
+
   {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter/nvim-treesitter",
@@ -80,7 +67,9 @@ end,            desc = "Toggle Flash Search" },
     lazy = true,
     event = "VeryLazy",
   },
+
   { "nvim-treesitter/nvim-treesitter-textobjects" },
+
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
@@ -158,6 +147,7 @@ end,            desc = "Toggle Flash Search" },
       })
     end,
   },
+
   {
     "folke/tokyonight.nvim",
     opts = {
@@ -168,22 +158,27 @@ end,            desc = "Toggle Flash Search" },
       },
     },
   },
+
   {
     "catppuccin/nvim",
   },
+
   "tpope/vim-repeat",
+
   {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup()
     end,
   },
+
   {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup()
     end,
   },
+
   {
     "mfussenegger/nvim-dap",
     dependencies = {
@@ -225,33 +220,7 @@ end,            desc = "Toggle Flash Search" },
       { "jbyuki/one-small-step-for-vimkind", module = "osv" },
     },
   },
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("lualine").setup({
-        options = {
-          theme = "tokyonight",
-        },
-        sections = {
-          lualine_a = { "mode" },
-          lualine_b = { "diff", "diagnostics" },
-          lualine_c = { { "filename", path = 1 } },
-          lualine_x = {
-            { "fileformat", "filetype" },
-            {
-              require("noice").api.statusline.mode.get,
-              cond = require("noice").api.statusline.mode.has,
-              color = { fg = "#ff9e64" },
-            },
-          },
-          lualine_y = { "progress" },
-          lualine_z = { "location" },
-        },
-        extensions = { "quickfix", "lazy", "mason", "nvim-dap-ui", "trouble" },
-      })
-    end,
-  },
+
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -260,6 +229,7 @@ end,            desc = "Toggle Flash Search" },
       require("nvim-surround").setup({})
     end,
   },
+
   {
     "tummetott/unimpaired.nvim",
     config = function()
@@ -267,18 +237,4 @@ end,            desc = "Toggle Flash Search" },
     end,
   },
   "mg979/vim-visual-multi",
-
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 500
-    end,
-    opts = {
-      triggers = {
-        { "<auto>", mode = "nxso" },
-      },
-    },
-  },
 }
