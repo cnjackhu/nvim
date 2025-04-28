@@ -87,7 +87,7 @@ return {
       desc = "Search for Plugin Spec",
     },
     {
-      "<leader>nh",
+      "<leader>na",
       function()
         Snacks.notifier.show_history()
       end,
@@ -116,7 +116,7 @@ return {
     -- },
     --
     {
-      "<leader>bf",
+      "<leader>fb",
       function()
         Snacks.picker.buffers({
           -- I always want my buffers picker to start in normal mode
@@ -237,7 +237,8 @@ return {
           },
           { icon = " ", key = "s", desc = "Restore Session", section = "session" },
           { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          -- { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          { icon = " ", key = "<Esc>", desc = "Quit", action = ":qa" },
         },
         header = [[
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
