@@ -4,7 +4,6 @@ return {
     event = "VeryLazy",
     opts = {},
   },
-
   { "brenoprata10/nvim-highlight-colors" },
 
   { "tpope/vim-projectionist" },
@@ -65,13 +64,6 @@ return {
   },
 
   {
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup()
-    end,
-  },
-
-  {
     "mfussenegger/nvim-dap",
     dependencies = {
       {
@@ -117,16 +109,13 @@ return {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup({})
-    end,
+    opts = {},
   },
 
   {
     "tummetott/unimpaired.nvim",
-    config = function()
-      require("unimpaired").setup()
-    end,
+    -- enabled = false,
+    opts = {},
   },
   "mg979/vim-visual-multi",
 }
