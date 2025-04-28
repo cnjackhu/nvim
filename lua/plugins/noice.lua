@@ -28,7 +28,7 @@ return {
       -- NOTE: If you enable messages, then the cmdline is enabled automatically.
       -- This is a current Neovim limitation.
       enabled = true, -- enables the Noice messages UI
-      view = "split", -- default view for messages
+      view = "notify", -- default view for messages
       view_error = "notify", -- view for errors
       view_warn = "notify", -- view for warnings
       view_history = "messages", -- view for :messages
@@ -55,23 +55,6 @@ return {
       end
       require("noice").setup(opts)
     end,
-  },
-  views = {
-    -- This sets the position for the search popup that shows up with / or with :
-    split = {
-      relative = "editor",
-      position = "top",
-      size = "60%",
-    },
-  },
-  keys = {
-    {
-      "<leader>nh",
-      function()
-        require("noice").cmd("history")
-      end,
-      desc = "Noice History",
-    },
   },
   dependencies = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
