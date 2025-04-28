@@ -29,36 +29,6 @@ return {
   },
 
   {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    ---@type Flash.Config
-    opts = {
-      jump = {
-        autojump = true,
-      },
-      modes = {
-        char = {
-          jump_labels = true,
-          multi_line = false,
-        },
-      },
-    },
-    -- stylua: ignore
-    keys = {
-      { "s",     mode = { "n", "x", "o" }, function()   require("flash").jump()
-end,              desc = "Flash" },
-      { "S",     mode = { "n" },           function()   require("flash").treesitter()
-end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function()   require("flash").remote()
-end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function()   require("flash").treesitter_search()
-end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function()   require("flash").toggle()
-end,            desc = "Toggle Flash Search" },
-    },
-  },
-
-  {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = function()
@@ -66,86 +36,6 @@ end,            desc = "Toggle Flash Search" },
     end,
     lazy = true,
     event = "VeryLazy",
-  },
-
-  { "nvim-treesitter/nvim-treesitter-textobjects" },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      local configs = require("nvim-treesitter.configs")
-
-      configs.setup({
-        ensure_installed = {
-          "lua",
-          "vim",
-          "vimdoc",
-          "json",
-          "python",
-          "regex",
-          "html",
-          "bash",
-          "markdown",
-        },
-        sync_install = false,
-        highlight = { enable = true },
-        indent = { enable = true },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "<C-space>",
-            node_incremental = "<C-space>",
-            scope_incremental = "<C-CR>",
-            node_decremental = "<bs>",
-          },
-        },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ["aa"] = "@parameter.outer",
-              ["ia"] = "@parameter.inner",
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = "@class.outer",
-            },
-            goto_next_end = {
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer",
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer",
-            },
-          },
-          swap = {
-            enable = true,
-            swap_next = {
-              ["<leader>p"] = "@parameter.inner",
-            },
-            swap_previous = {
-              ["<leader>ps"] = "@parameter.inner",
-            },
-          },
-        },
-      })
-    end,
   },
 
   {
@@ -161,6 +51,8 @@ end,            desc = "Toggle Flash Search" },
 
   {
     "catppuccin/nvim",
+    priority = 1000,
+    name = "catppuccin",
   },
 
   "tpope/vim-repeat",

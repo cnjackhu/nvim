@@ -87,15 +87,34 @@ return {
       desc = "Search for Plugin Spec",
     },
     {
-      "<leader>n",
+      "<leader>nh",
       function()
         Snacks.notifier.show_history()
       end,
       desc = "Notification History",
     },
+    {
+      "<leader>nn",
+      function()
+        Snacks.picker.notifications()
+      end,
+      desc = "Notification History",
+    },
     -- search
     -- find
-    -- Navigate my buffers
+
+    -- {
+    --   "<leader>n",
+    --   function()
+    --     if Snacks.config.picker and Snacks.config.picker.enabled then
+    --       Snacks.picker.notifications()
+    --     else
+    --       Snacks.notifier.show_history()
+    --     end
+    --   end,
+    --   desc = "Notification History",
+    -- },
+    --
     {
       "<leader>bf",
       function()
@@ -240,61 +259,13 @@ return {
       },
     },
     explorer = { enabled = false },
-    indent = { enabled = true },
-    input = { enabled = false },
+    indent = { enabled = false },
+    input = { enabled = true },
+    scroll = { enabled = true },
     picker = {
       enabled = true,
       ui_select = true,
       debug = { scores = false }, -- show scores
-      -- layout = {
-      -- preset = "ivy",
-      -- When reaching the bottom of the results in the picker, I don't want
-      -- it to cycle and go back to the top
-      -- cycle = false,
-      -- },
-      layouts = {
-        -- I wanted to modify the ivy layout height and preview pane width,
-        -- this is the only way I was able to do it
-        -- NOTE: I don't think this is the right way as I'm declaring all the
-        -- Then call this layout in the keymaps above
-        -- got example from here
-        -- https://github.com/folke/snacks.nvim/discussions/468
-        ivy = {
-          layout = {
-            box = "vertical",
-            backdrop = false,
-            row = -1,
-            width = 0,
-            height = 0.5,
-            border = "top",
-            title = " {title} {live} {flags}",
-            title_pos = "left",
-            { win = "input", height = 1, border = "bottom" },
-            {
-              box = "horizontal",
-              { win = "list", border = "none" },
-              { win = "preview", title = "{preview}", width = 0.5, border = "left" },
-            },
-          },
-        },
-        -- I wanted to modify the layout width
-        vertical = {
-          layout = {
-            backdrop = false,
-            width = 0.8,
-            min_width = 80,
-            height = 0.8,
-            min_height = 30,
-            box = "vertical",
-            border = "rounded",
-            title = "{title} {live} {flags}",
-            title_pos = "center",
-            { win = "input", height = 1, border = "bottom" },
-            { win = "list", border = "none" },
-            { win = "preview", title = "{preview}", height = 0.4, border = "top" },
-          },
-        },
-      },
       matcher = { frecency = true },
       win = {
         input = {
@@ -309,14 +280,8 @@ return {
           },
         },
       },
-      formatters = {
-        file = {
-          filename_first = true, -- display filename before the file path
-          truncate = 80,
-        },
-      },
     }, -- replace `vim.ui.select` with the snacks picker},
-    notifier = { enabled = false },
+    notifier = { enabled = true, timeout = 3000 },
     quickfile = { enabled = true },
     scope = { enabled = false },
     statuscolumn = { enabled = false },
