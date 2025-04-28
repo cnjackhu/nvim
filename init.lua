@@ -23,7 +23,7 @@ require("lazy").setup("plugins", {
 require("hjh.globals")
 require("hjh.keymaps")
 require("hjh.options")
-vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme catppuccin-frappe")
 -- related to vim.illluminate plugin
 vim.cmd("hi IlluminatedWordText guibg=none gui=underline")
 vim.cmd("hi IlluminatedWordRead guibg=none gui=underline")
