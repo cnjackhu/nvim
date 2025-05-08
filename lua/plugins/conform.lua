@@ -13,7 +13,7 @@ return {
           bash = { "beautysh" },
           yaml = { "yamlfix" },
           toml = { "taplo" },
-          sh = { "shellcheck" },
+          sh = { "shfmt", "shellcheck" },
           python = {
             -- To fix auto-fixable lint errors.
             "ruff_fix",

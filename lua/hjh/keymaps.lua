@@ -1,6 +1,7 @@
 -- set esc to quit lazy ui
 require("lazy.view.config").keys.close = "<esc>"
-
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
 -- -- from here https://miek.nl/2024/january/31/osc52-my-cut-paste-journey/
 -- local map = vim.keymap.set
 -- local opts = { noremap = true, silent = true }
@@ -133,8 +134,8 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Resize Ver
 
 -- Visual --
 -- Stay in indent mode
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
 
 vim.keymap.set({ "n", "o", "x" }, "<s-h>", "^", { desc = "Jump to beginning of line" })
 vim.keymap.set({ "n", "o", "x" }, "<s-l>", "g_", { desc = "Jump to end of line" })
@@ -145,6 +146,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Block Up" })
 
 -- Search for highlighted text in buffer
 vim.keymap.set("v", "//", 'y/<C-R>"<CR>', { desc = "Search for highlighted text" })
+vim.keymap.set("n", "gl", function()
+  vim.diagnostic.open_float()
+end, { desc = "Open Diagnostics in Float" })
 
 -- Exit terminal mode shortcut
 vim.keymap.set("t", "<C-t>", "<C-\\><C-n>")
@@ -173,5 +177,44 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
     vim.highlight.on_yank({ timeout = 200 })
+  end,
+})
+
+local function augroup(name)
+  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+end
+-- close some filetypes with <q>
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("close_with_esc"),
+  pattern = {
+    "PlenaryTestPopup",
+    "checkhealth",
+    "dbout",
+    "gitsigns-blame",
+    "grug-far",
+    "help",
+    "lspinfo",
+    "neotest-output",
+    "neotest-output-panel",
+    "neotest-summary",
+    "notify",
+    "noice",
+    "qf",
+    "spectre_panel",
+    "startuptime",
+    "tsplayground",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.schedule(function()
+      vim.keymap.set("n", "<Esc>", function()
+        vim.cmd("close")
+        pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+      end, {
+        buffer = event.buf,
+        silent = true,
+        desc = "Quit buffer",
+      })
+    end)
   end,
 })
